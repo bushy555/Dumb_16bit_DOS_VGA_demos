@@ -1,0 +1,15 @@
+# Makefile for SHADES.EXE
+
+!ifndef ASM
+ASM=tasm.exe
+LINK=tlink.exe
+!endif
+
+shades.exe : shades.obj
+	$(LINK) shades.obj
+
+shades.obj : shades.asm shades.inc sincos.inc
+	$(ASM) -t -m -q shades.asm
+
+clear :
+	del shades.obj shades.map shades.exe
