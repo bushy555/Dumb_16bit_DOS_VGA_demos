@@ -1,0 +1,392 @@
+ÚÄ                                                                           Ä¿
+³                              ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                            ³
+                              ÚÙ                 À¿
+                              ³      Bushy's      ³
+                              ³                   ³
+                              ³     Boot  Fun     ³ 
+                              À¿                 ÚÙ
+                               ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+                                  Feb/Mar. 1995
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ 
+1.0   Information.
+  1.1 What is it?
+  1.2 Program Info.    
+2.0   How to use.
+  2.1 Known Bugs.
+3.0   Warranty Stuff...
+4.0   Questions & Answers.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+1.0 Information.
+
+  1.1 What is it?
+
+Boot Fun is a silly little program that I wrapped up very quickly so that I
+could save the different boot sector programs much quicker and easier than 
+loading up (SLOW!) Nortons DISKEDIT or by typing "W 100 0 0 1" in Debug. 
+Umm... well... maybe not.
+
+Currently it includes:
+DOS 5 boot, "Fire", "Sig", "My-disk", "drive A:", "drive C:", "walk", "COLOUR",
+Boot_B, Boot_C, and Serial number changer.
+
+Maybe version 2 will include some more of my useless converions of other
+programs to work within about 480 bytes. 
+
+Both Fire and Sig can be shown as demo's or, as with the other four, can be 
+just a small surprise to someone when they accidently leave the disk in A: 
+before boot-up has been completed. Or use it on your enemie's Hard Drive, when
+they aren't looking!. ("Would I do this....?")
+
+I place Sig on all of the disks I hand out to people, so that (hopefully), 
+if they ever "accidently" forget to give the disk back to me, and they do
+reboot one day with the disk still in the drive, they see a message:
+"THIS IS BUSHY'S DISK!" and again, hopefully, they'll give the disk back to
+me and not just format the disk. 
+
+Or you could place a small funny caption in Sig and look at the faces of
+so called "computer gurus" when they see such a thing and let them work it
+out. "YOUR COMPUTER IS NOW STONED" will make people look a second time, and
+is sometimes rather amusing.
+
+Once whatever program is saved to floppy, wack or leave the disk in A:, 
+and run BOOT.COM, hit the reboot button, hit the power-point switch or pull
+the cord. After the computer does its POST (power on self test), normally
+it will "ask" A: if there is a floppy in the drive and will then execute the
+boot program on A:. That program detects if the floppy has a system on it - 
+command.com, io.sys, dos.sys. With these programs, they are executed
+straight away without any system loaded. 
+
+
+NOTE: Will only work with the A: Floppy or C: Hard-drive for the boot-up effect,
+      unless you change your configurations around within your BIOS.
+
+      BootFun will allow you to save to either drive A: thru to drive D:
+
+      If it doesn't work staright away, check within your BIOS setup that
+      drive A: has boot up precedence before drive C:. I only know of AMI
+      BIOS which has this feature. I'm not sure about the newer versions
+      of DTK, Phoneix, ... etc ...
+
+      There is in any way, no such virus, trojan horse, time bomb etc in this
+       program. I would have killed my own system if there had of been.
+
+      If you can find one, then I'll be more than happy to hear about your
+       complaints about this program. 
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  1.2 Program Info.
+
+At the time of writing this silly .DOC file, BOOTFUN.COM was about 3720 bytes
+in length. It could have been as small as about 3400 bytes, or smaller... but
+that would of been pushing what user-friendly stuff already exists. It will
+be PK'lited, which may reduce the size slightly.
+
+It was written in a few hours (Still learning ASM...) using DEBUG. Then it
+was transported over to MASM... MASM throws NOP's into the code just for
+good luck and therefore greatly increases the size. It is a bugger, I know.
+ThenI decided to ad some more stuff to it which are detailed below.
+
+
+The Signature type boot program was obtained from a posting from someone
+(Thanks to whoever...) on the newsgroup ALT.HACKERS on the (about) 27th
+or 28th March, 1993. "SIG.COM" as it is known, came with 4 other small 
+programs which were LIGHTS.COM, SCROLL.COM, CURSOR.COM and FLICKER.COM,
+each being about 70 to 95 bytes TSR's. They were posted as part of an
+"April Fool" type posting thread, which never got started. Shame!
+
+Shameless Plug: Look out for my compilation of April Fools day TSR's
+                and other useless progs around 25th-28th, March, '95, 
+                on ALT.HACKERS.
+
+Sig is a 167 byte VGA displaying program. It displays whatever and then a 
+pretty colourful pattern is displayed in the background. On a DX66 or greater
+the pattern looks quite "freak-out" type stuff. (Have you seen MINDWARP demo?)
+
+You can enter up to 33 odd characters which will be displayed when the 
+computer is booted and the floppy is left in the drive, and a small pretty 
+pattern is displayed in the back ground.
+
+
+Fire was obtained from the FTP site ftp.uwp.edu (can be found at any .ciac.
+sites) in the directory \pub\msdos\demos\programming\sources, and called
+FIRE.LZH. Fire was originally written by Jare of Vangelisteam (or the now
+Iguana), about 9th-10th, May, 1993.
+
+Fire is just that. A fire graphical display which was in 80 * 50 resolution
+Included with this .ZIP file you should find FIRE.EXE, a workable cut down 
+size of the original. Again, all credits to Jare of Iguana.
+
+The original Fire is around 1500 bytes in size, and uses the 256 colour
+palette. Since one sector is 512 bytes, Fire had to be cut down from it's
+original size to 490-ish bytes. About half of the original size consists of
+the pre-defined palette and something else, which were cut out. With the
+palette not there, the effect really dies, but it is still there, and is
+still quite a feat. When Fire was at around 450 bytes, it was found that 
+it could still be decreased in size without any (more) loss of the Fire
+effect. Currently it is around 380 bytes, and could be decreased about
+another 100 bytes if only I could be bothered getting rid of the stack
+segment thingy within Fire. At around 280 bytes, the effect would be quite
+incredible. (well.... that's what I reckon anyway.)
+
+With no pre-defined colour palette, Fire still looks at where the palette was
+and will only find garbage - random data, quite possibly only a lot of 00's
+in which case not very much will be displayed. The Fire is rather chunk-ish
+and is on a green background. I guess the green can be changed to black, but
+I like it! It stands out from the crowd!
+
+
+
+DOS 5.0 is of course that... an original copy of the boot sector. So if you 
+stuff up C: you can just copy this back onto your HD.
+
+It doesn't matter which DOS version it comes from or what version you are
+using. I could of wacked this v2.11 which I wrote this on and the people
+using version 6.22 wouldn't of even realised!
+
+
+
+My-Disk, just scrolls "THIS IS MY DISK" back and fourth. Useless.
+
+
+
+Drive_A displays:
+ "Not ready reading drive A"
+ "Abort, Retry, Fail ?"
+
+That's it!. it just keep looping around. Hopefuly making someone think that
+A: drive is bung.
+
+
+
+Drive_C displays:
+ "Not ready reading drive C"
+ "Abort, Retry, Fail ?"
+
+That's it!. it just keep looping around. Hopefuly making someone think that
+the hard drive is bung/cactus/dead.
+
+
+Walk  - 2/3 of the screen "dissolves" and then a bloke walks from left to
+        the right of the screen, over and over again.
+
+
+Fill-COLOUR - just displays (in VGA) the colour range from colour 0 to 
+              colour 255.
+            
+
+BOOT B: Drive. Now this is veryuseful. Do you have games which can only be
+played from the floppy but it is in the other size format than your A:, ie
+your B:?. Well... now... use this on a floppy in A: drive and it will then
+boot B: drive, so, for example, I can play my original Lode Runner 5 ¬" disk
+in my B: drive. - Not sure why I would want to do this - I've cracked it anyway.
+
+Anyway BOOT B can be useful if you want it to be. 
+(- grabbed from Scott A Numbers.)
+
+
+
+BOOT C: This is proberbly the best on here. This will copy a bootstrap program
+onto A: drive, so when it boots up, it will execute and then boot C:, as if
+there was no disk in A: drive. It is like it does not see A: at all. 
+This can be bloody handy if you are mucking around with a floppy in A: drive
+and have to do a lot of booting.
+(-grabbed from Bill Gibson's "Boot Thru", 1987)
+
+Im not exactly sure what would happen if you were to place this onto C: drive,
+I can only assume it would just keep booting itself and thus locking you
+out from C: drive for a very long time, until you possibly you plugged it in
+as D: and formatted it. Maybe. Anyway, I thought I had better disable from
+copying this onto C: drive, as I did not want to try it. - It is DISABLED!.
+
+
+CHANGING the SERIAL number - This can be handy if you want to keep track of
+your disks, or wack on a specific sort of code. 
+
+You MUST enter in eight (8), (7+1) hex digits, ie  0000-0001, FFFF-FFFF etc.
+
+There is a bug here. - for me anyway. It wont always work first go, but
+always on the second. I guess it is just that the disk-controller is just 
+not resetting itself. See below.
+If it doesn't go first time, try it again and it should change the number to 
+your liking.  
+
+
+
+
+Boot Fun will overwrite thus removing any viruses which may be sitting
+in the boot sector, such as the Monkey Virus,  Michaelangelo (stop it from
+being executed.), and other such common boot sector viri/viruses.
+
+ - both I have caught off other peoples hard-drives.
+
+...And I didn't think viruses could exist in the out back of Australia.
+
+
+NOTE: No viruses whatsoever in any of these here .COM files. Well, not 
+when they were .ZIP'd by me.
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+2.0 How to use.
+
+BootFun should be simple enough to use. It was made by a simple person. 
+Myself.
+
+Hit:  BOOTFUN   at the dos prompt and you will get no VGA 256 colour 
+ray-traced menu system, no SB-32 AWE or GUS MAX support, actually no music
+what-so-ever... what do you expect for about 2500 bytes?
+
+What you will get is about a 10 lined very simple menu system that is fairly
+bug-proof. How many bugs can fit into 2850 odd bytes - as opposed to a few ten
+megabytes of Chiago, Win 95, OS/2, Win 3.1, Quake etc?
+
+OK, hit from "1" to ":" for whatever one you want. 
+Select either A:, B:, C: or D:.
+Hit Y for Yes or any other key to exit back to menu. Hit ESC at the menu 
+to quit. Simple?
+
+If you want the Sig, which is rather cool, enter in the text that you want
+to be displayed. Hit A: - D:, and then Y/N/ESC/any-other-key-not-to-do-it...
+and that's it. Done.
+
+      UP to 33 characetrs can be displayed. It isn't a great deal, but I 
+      decided that it was enough to display whatever it is that you want to
+      said, albeit a bit short.
+
+Serial number is the same. Just enter in 8 hexadecimal digits.
+
+Re-boot your computer and watch it. Then you'll have to re-boot to get out 
+of it, this time, make sure you have taken the floppy out of the drive.
+
+
+NOTE: There is no need to back up your disk. This program is safe! Has been 
+      tested on many, many different floppies, and different systems, such as:
+
+      Toshiba, DTK, Osborne, DEC, Wang, Sprinter, Olivetthingy, Acer, Multitech
+      and others, and all came up perfect. No errors.
+
+      ...But if you want to backup you data, or just try it with a newly 
+      formatted floppy.... then go ahead. I can't stop you... not from where 
+      I am at the moment.
+      
+
+2.1 Known Bugs.
+      There are two bugs that I know of:.
+
+	- Walk.    I spent too damn long on this trying to get it not to jump,
+                   eventually I said "stuff it". - sorry.
+
+	- Serial number changer. It will always work on the second go.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+3.0 Warranty Stuff...
+
+All other programs have this so why not this one? Ok, Let me see... If you
+end up wrecking your HD or floppies in the event of using BootFun, don't sue
+me. Your should of read in your manual where it says the words "BACKUP".
+I am not in America where everyone sue's everyone else for breathing. 
+I am a bloody Australian, and bloody Australian's don't crap on other people
+If we get problems, we fix them and don't bother about getting compensation!
+We are do-ers!, not lamers (Is that the correct word?).
+
+...anyway, this stuff is all free-ware/public domain crap anyway. What do
+   you expect for such stuff? I didn't cack up my floppies/HD with it, why  
+   should it cack up on you - All pc-clones are supposed to be 100% compatible
+   anyway aren't they? If your cacks up, BLAME YOUR MANUFACTURER!
+
+So if you kill your A:/B:/C:/D: etc, you can write me mail asking for help
+on how to go about fixing your A:/B:/C:/D: etc.
+
+And if you really want to sue me, go ahead... all you will get is $2.50, and
+this Toshiba T1000 Laptop that BootFun was written on. 
+
+(Toshiba T1000  -  CGA LCD, 512k RAM, 720k, no HD)
+
+
+
+4.0 Answers & Questions.
+
+Q. Why?                   Q. How do you milk a coconut?
+A. Why bloody not!        A. Use a very low stool.
+
+Q. What has six legs, green and would kill you if it fell out of a tree?
+A. A billiard table.
+
+Q. Why did the Koala fall out of the tree?
+A. 'Coz it was dead.
+
+Q. Why did the second Koala fall out of the tree?
+A. 'Coz the first one hit it.
+
+Q. What is white and sits in a tree?
+A. A fridge.
+
+Q. What goes "bark, bark"?
+A. A Dog.
+
+Q. How do you make a dog go "MEOOOOWWWWWWOWOWWWWWW"
+A. Put it through a ban saw.
+
+Sad I know... these are the sort of jokes that go through Australian Schools.
+
+
+BootFun is public domain crap. The question to be answered here is:
+  "Should it be Public Domain or be deleted?"
+
+BootFun will be uploaded to garbo.uwasa, simtel, and ciac ftp sites and 
+(hopefully) to their mirrors.
+
+If you want to send me flames etc about my grammar, english usage, spelling, 
+flames, mail bombs, death threats, helps, thanx, greetz, sources, warez,
+hot-warez, ASM-talk, "what is the weather like", 4WDing-talk, 
+electronics-talk,  etc, please DO NOT send them to /dev/null but to me. 
+
+                        I WANT E-MAIL.  (please...?)
+
+                                            This is a Mr Bushy production. '95.
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+WANTED: A Mauri BIG BEAR R/C vehicle. Sold around 1985 to 1988. (I WILL BUY IT!)
+        An address of a mirror site of FTP.UWP.EDU/FTP.ENG.UFL.EDU in Australia.
+	An answer to this question... "Why doesn't it rain here?"
+        An answer to "Why is water wet?"
+
+For: comments, flames, suggestions, demo-talk, ASM-talk, C/C++-talk, 
+     MOD/S3M/MTM/STX/STM/669/ASF/OCT/FAR/PSM/etc talk, death threats,
+     mail bombs, Warez, hot-warez, sources, etc write to:
+
+Dave Maunder  "BUSÃ´Y"
+
+"Lyndondale"
+Quirindi, NSW,
+2343, Australia
+
+E-Mail (Before December 1996): dmaund10@scu.edu.au      (Finger me for Info.)
+       (After  December 1996) : ??? I'll Get Back To You Shortly! (IGBTYS!)
+
+"Ever wondered where bridge toll collectors go for their toilet break?"
+
+Greetz to whoever wants them. Especially to:
+   - everyone on #australia on IRC. Jol, Pic, Dain, Rag, Pippen. 
+                                      T'was good before "they" kicked me off.
+   - QWERTY, Grumble, Baby_Huey.
+   - All DEMO associated type-persons.
+   - All MOD  associated type-persons.
+   - All SQ6 players. (What's the game like?).
+
+Time:      8:49pm (Dark outside.... must be night.)
+Place:     Bedroom.
+'puter:    Toshiba T1000. 512k, no-HD, 720k, CGA LCD.
+Listening: ZZZ-FM 100.9FM.  -Lismore, NSW, Aus. "Cruise Control", S.Pumpkins.
+
+³                                                                             ³
+ÀÄÄ                                                                         ÄÄÙ
+
