@@ -1,0 +1,27 @@
+; Uses double buffering... two (split) screens...
+
+;and this version also uses Lookup tables instead of (320*Y)+X
+
+	sub	bx, bx
+	sub	bp, bp
+
+        mov     cx, 200				;set up Mr Lookup Table
+@@@1:   mov     word ptr Ytable[bp], bx
+        add     bx, 320
+        inc     bp
+        inc     bp
+	loop	@@@1		
+
+
+
+        mov     di, word ptr Ytable[bx]
+	push	di
+	add	di, bp
+	mov     al, 010			;  CYAN = 3.   BLUE = 9.
+	stosb	
+
+
+
+Ytable   dw 400 dup (?)
+	
+

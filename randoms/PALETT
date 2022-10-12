@@ -1,0 +1,29 @@
+code    SEGMENT PARA PUBLIC 'code'
+	ASSUME cs:code, ds:code, es:code, ss:code
+	org     100h
+.386
+start: 
+
+
+@0100:  push	0A000h
+@0101:  pop	es
+@0105:  mov	ax, 0013h
+@0107:  INT     10h
+					;from here down, is the background.
+@0109:  MOV     DX, 03C8h
+@010C:  MOV     AL, 01
+@010E:  OUT     DX, AL
+@010F:  INC     DX
+@0110:  MOV     CX, 00FEh
+@0113:  SUB     AL, AL
+@0115:  OUT     DX, AL
+@0116:  OUT     DX, AL
+@0117:  MOV     AL, CL
+@0119:  shr	al, 02
+@011A:  out	dx, al
+@011D:  LOOP    @0113
+@011F:  MOV     AL, 3Fh
+@0121:  OUT     DX, AL
+@0122:  OUT     DX, AL
+@0123:  OUT     DX, AL
+

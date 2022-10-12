@@ -1,0 +1,85 @@
+code    SEGMENT PARA PUBLIC 'code'
+	ASSUME cs:code, ds:code, es:code, ss:code
+	org     100h
+.386
+start: 
+
+
+        PUSH    ES
+        MOV     AX, 0B800h
+        MOV     ES, AX
+        MOV     SI, offset DJ
+        MOV     DI, 0724h
+        MOV     CX, 0007h
+@010F:  MOV     AL, [SI]
+        MOV     es:[DI], AL
+        INC     DI
+        MOV     AL, 03
+        MOV     es:[DI], AL
+        INC     DI
+        INC     SI
+
+        call    @@_1
+
+        LOOP    @010F
+@011E:  MOV     CX, 07D0h
+        XOR     BX, BX
+        MOV     SI, 0000
+@0126:  MOV     AH, es:[SI]
+        CMP     AH, 20h
+        JZ      @013F
+        JL      @0139
+        DEC     AH
+        MOV     es:[SI], AH
+        INC     BX
+        JMP     @013F
+@0139:  INC     AH
+        MOV     es:[SI], AH
+        INC     BX
+@013F:  CMP     SI, 0722h
+        JNZ     @0148
+        ADD     SI, +0Eh
+@0148:  INC     SI
+        INC     SI
+
+        call    @@_1
+
+        LOOP    @0126
+        CMP     BX, +00
+        JNZ     @011E
+@0154:  MOV     SI, 1C5Ch
+        MOV     DX, 03C8h
+        MOV     AL, 03
+        OUT     DX, AL
+        MOV     CX, 0003h
+        MOV     DX, 03C9h
+@0163:  LODSB
+        CMP     cs:count1, AL
+        JG      @016F
+        MOV     AL,  cs:count1
+@016F:  OUT     DX, AL
+
+;        call    @@_1
+
+        LOOP    @0163
+        DEC     BYTE PTR cs:count1
+        CMP     BYTE PTR cs:count1, 00
+        JG      @0154
+        POP     ES
+        RET
+
+@@_1:   pusha
+        mov     cx, 79
+        mov     dx, 03dah
+@@_2:   in      al, dx
+        xor     ax, cx
+        and     al, 8
+        jnp     @@_2
+        loop    @@_2
+        popa
+        ret
+
+DJ	db " BUSHY "
+count1	db 255
+   code    ENDS
+END     start

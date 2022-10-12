@@ -1,0 +1,16 @@
+
+;       version 1 of square pixels
+;        mov     ah, 0e3h
+;        mov     dx, 03c2h
+;        out     dx, ax
+
+;       version 2 of square pixels
+;        mov     dx, 03cch
+;        in      al, dx
+;        mov     dx, 3c2h
+;        mov     ah, al
+;        mov     al, 11000000b
+;        or      al, ah
+;        out     dx, al
+
+
